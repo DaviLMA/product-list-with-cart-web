@@ -8,45 +8,20 @@
   </head>
   <body>
     <div class="container">
-      <div class="product-list">
-        <div class="product">
-          <img
-            src="assets/images/image-waffle-desktop.jpg"
-            alt="Waffle with Berries"
-          />
-          <div class="product-footer">
-            <div class="category">Waffle</div>
-            <div class="name">Waffle with Berries</div>
-            <div class="price">$6.50</div>
-            <div class="button">Add to Cart</div>
-          </div>
-        </div>
-        <div class="product">
-          <img
-            src="assets/images/image-tiramisu-desktop.jpg"
-            alt="Classic Tiramisu"
-          />
-          <div class="product-footer">
-            <div class="category">Tiramisu</div>
-            <div class="name">Classic Tiramisu</div>
-            <div class="price">$5.50</div>
-            <div class="button">Add to Cart</div>
-          </div>
-        </div>
-
-        <!-- Espaço dos outros produtos -->
+      <!-- Lista de Produtos -->
+      <div class="product-list" id="productList">
+        <!-- Produtos serão inseridos dinamicamente aqui -->
       </div>
 
-      <div class="cart">
-        <h2>Your Cart</h2>
-        <div class="cart-item">
-          <div class="name">Classic Tiramisu</div>
-          <div class="price">$5.50</div>
-        </div>
-        <!-- Mais items no carrinho estáticamente -->
-        <div class="cart-total">Total: $5.50</div>
-        <button class="confirm-button">Confirm Order</button>
+    <!-- Carrinho de Compras -->
+    <div id="shoppingCart" class="cart">
+      <h2>Your Cart (<span id="cartCount">0</span>)</h2>
+      <div id="cartItems">
+        <p>Your added items will appear here</p>
       </div>
+      <div><strong>Total: </strong> <span id="cartTotal">$0.00</span></div>
+      <button id="confirmOrderBtn" class="confirm-button">Confirm Order</button>
     </div>
+    <script src="app.ts" type="module"></script>
   </body>
 </html>
