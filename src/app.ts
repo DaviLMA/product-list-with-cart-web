@@ -1,49 +1,6 @@
 import { v4 as randomUUID } from "uuid";
-import { Product } from "./src/entities/product";
-
-class ShoppingCart {
-  private items: Product[] = [];
-
-  addToCart(product: Product): void {
-    const existingProduct = this.items.find((item) => item.id === product.id);
-
-    if (existingProduct) {
-      existingProduct.quantity += product.quantity;
-    } else {
-      this.items.push(product);
-    }
-    this.updateCartDisplay();
-  }
-
-  getTotal(): number {
-    return this.items.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  }
-
-  updateCartDisplay(): void {
-    const cartElement = document.getElementById("cartItems");
-    const cartCount = document.getElementById("cartCount");
-    const totalElement = document.getElementById("cartTotal");
-
-    if (cartElement && totalElement && cartCount) {
-      cartElement.innerHTML = ""; // Clear previous cart items
-      this.items.forEach((item) => {
-        cartElement.innerHTML += `
-          <div class="cart-item">
-            <span class="name">${item.name} (${item.quantity}x)</span>
-            <span class="price">$${(item.price * item.quantity).toFixed(
-              2
-            )}</span>
-          </div>
-        `;
-      });
-      cartCount.innerText = `${this.items.length}`;
-      totalElement.innerText = `$${this.getTotal().toFixed(2)}`;
-    }
-  }
-}
+import { Product } from "./entities/product";
+import { ShoppingCart } from "./entities/shoppingcart";
 
 // Instantiate the shopping cart
 const cart = new ShoppingCart();
@@ -93,7 +50,13 @@ function generateProductList(productData: any[]) {
         </div>
       `;
 
-      productElement.querySelector(".button")?.addEventListener("click", () => {
+      const button = productElement.querySelector(".button");
+      button?.addEventListener("click", () => {
+        button.classList.add("pulse-animation");
+        setTimeout(() => {
+          button.classList.remove("pulse-animation");
+        }, 300); // Duration should match the animation time
+
         cart.addToCart(product);
       });
 
@@ -107,5 +70,11 @@ fetchProducts();
 
 // Add event listener to confirm order button
 document.getElementById("confirmOrderBtn")?.addEventListener("click", () => {
+  const confirmButton = document.getElementById("confirmOrderBtn");
+  confirmButton?.classList.add("pop-animation");
+  setTimeout(() => {
+    confirmButton?.classList.remove("pop-animation");
+  }, 300); // Duration should match the animation time
+
   alert("Your order has been confirmed!");
 });

@@ -3,14 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./src/styles/index.scss" />
     <title>Product List with Cart</title>
   </head>
   <body>
     <div class="container">
       <!-- Lista de Produtos -->
       <div class="product-list" id="productList">
-        <!-- Produtos serão inseridos dinamicamente aqui -->
+        <!-- Javascript/Typescript cuida de por os produtos na div dinâmicamente -->
       </div>
 
     <!-- Carrinho de Compras -->
@@ -22,6 +22,6 @@
       <div><strong>Total: </strong> <span id="cartTotal">$0.00</span></div>
       <button id="confirmOrderBtn" class="confirm-button">Confirm Order</button>
     </div>
-    <script src="app.ts" type="module"></script>
+    <script src="./src/app.ts" type="module"></script>
   </body>
 </html>
