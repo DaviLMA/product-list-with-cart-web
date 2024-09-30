@@ -55,7 +55,7 @@ function generateProductList(productData: any[]) {
         button.classList.add("pulse-animation");
         setTimeout(() => {
           button.classList.remove("pulse-animation");
-        }, 300); // Duration should match the animation time
+        }, 300);
 
         cart.addToCart(product);
       });
