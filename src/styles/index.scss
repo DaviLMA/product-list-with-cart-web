@@ -1,203 +1,217 @@
-// Variables
-$background-color: #f5f5f5ee;
-$text-color: #333;
-$button-bg-color: #ff7043;
-$button-hover-color: #e55b32;
-$border-color: #eaeaea;
-$card-bg-color: #fff;
-$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-$font-family: "Arial", sans-serif;
+// Variáveis de estilo para cores, sombras e fontes
+$background-color: #f5f5f5ee; // Cor de fundo da página
+$text-color: #333; // Cor principal do texto
+$button-bg-color: #ff7043; // Cor de fundo dos botões
+$button-hover-color: #e55b32; // Cor do botão ao passar o mouse
+$border-color: #eaeaea; // Cor da borda para separações
+$card-bg-color: #fff; // Cor de fundo dos cartões (produtos, carrinho)
+$card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Sombra aplicada aos cartões
+$font-family: "Arial", sans-serif; // Fonte padrão da página
 
+// Importação de base e componentes do Tailwind CSS
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-// Reset
+// Reset de estilo básico
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: $font-family;
+  font-family: $font-family; // Define a fonte para todos os elementos
 }
 
+// Estilo do corpo da página
 body {
-  background-color: $background-color;
-  color: $text-color;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-height: 100vh;
-  padding: 20px;
+  background-color: $background-color; // Cor de fundo da página
+  color: $text-color; // Cor do texto
+  display: flex; // Organiza o layout com flexbox
+  justify-content: center; // Centraliza horizontalmente o conteúdo
+  align-items: flex-start; // Alinha o conteúdo ao topo da tela
+  min-height: 100vh; // Define altura mínima da página
+  padding: 20px; // Adiciona espaçamento interno
 
+  // Estilo do contêiner principal que engloba a lista de produtos e o carrinho
   .container {
     display: flex;
-    flex-direction: row;
-    max-width: 1200px;
-    gap: 40px;
+    flex-direction: row; // Alinha os elementos em linha
+    max-width: 1200px; // Largura máxima do contêiner
+    gap: 40px; // Espaçamento entre os elementos filhos
 
+    // Estilo da lista de produtos
     .product-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      width: 800px;
+      display: grid; // Organiza os produtos em grade
+      grid-template-columns: repeat(3, 1fr); // Três colunas de tamanho igual
+      gap: 20px; // Espaçamento entre os produtos
+      width: 800px; // Largura fixa da lista de produtos
 
+      // Estilo de cada produto individual
       .product {
-        background-color: $card-bg-color;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: $card-shadow;
-        text-align: center;
-        transition: transform 0.2s;
+        background-color: $card-bg-color; // Fundo branco
+        border-radius: 8px; // Bordas arredondadas
+        overflow: hidden; // Esconde conteúdo que ultrapassa o limite do elemento
+        box-shadow: $card-shadow; // Sombra leve para destaque
+        text-align: center; // Texto centralizado
+        transition: transform 0.2s; // Animação suave para transformações
 
+        // Efeito de hover para elevar o cartão
         &:hover {
-          transform: translateY(-5px);
+          transform: translateY(-5px); // Move o cartão 5px para cima
         }
 
+        // Estilo da imagem do produto
         img {
-          width: 100%;
-          height: auto;
-          border-bottom: 1px solid $border-color;
+          width: 100%; // Imagem ocupa toda a largura do cartão
+          height: auto; // Altura ajustada automaticamente
+          border-bottom: 1px solid $border-color; // Linha de separação inferior
         }
 
+        // Estilo do rodapé do cartão do produto
         .product-footer {
-          padding: 10px;
+          padding: 10px; // Espaçamento interno do rodapé
 
           .name {
-            font-weight: bold;
-            margin: 10px 0 5px;
+            font-weight: bold; // Nome do produto em negrito
+            margin: 10px 0 5px; // Margens do nome
           }
 
           .price {
-            color: #888;
+            color: #888; // Cor acinzentada para o preço
           }
 
+          // Estilo do botão "Adicionar ao Carrinho"
           .button {
-            background-color: $button-bg-color;
-            color: white;
-            padding: 8px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin: 10px 0;
-            transition: background-color 0.3s;
+            background-color: $button-bg-color; // Cor de fundo do botão
+            color: white; // Cor do texto do botão
+            padding: 8px; // Espaçamento interno
+            border-radius: 5px; // Bordas arredondadas
+            cursor: pointer; // Ícone de cursor ao passar sobre o botão
+            margin: 10px 0; // Margens ao redor do botão
+            transition: background-color 0.3s; // Transição suave para a mudança de cor
 
             &:hover {
-              background-color: $button-hover-color;
+              background-color: $button-hover-color; // Cor ao passar o mouse sobre o botão
             }
           }
         }
       }
     }
 
+    // Estilo do carrinho de compras
     .cart {
-      background-color: $card-bg-color;
-      padding: 20px;
-      width: 300px;
-      border-radius: 10px;
-      box-shadow: $card-shadow;
+      background-color: $card-bg-color; // Fundo branco
+      padding: 20px; // Espaçamento interno
+      width: 300px; // Largura fixa do carrinho
+      border-radius: 10px; // Bordas arredondadas
+      box-shadow: $card-shadow; // Sombra leve para destaque
       display: flex;
-      flex-direction: column;
-      height: max-content;
+      flex-direction: column; // Organiza o conteúdo em coluna
+      height: max-content; // Ajusta a altura ao conteúdo
 
       h2 {
-        margin-bottom: 20px;
-        font-size: 22px;
-        color: #f14e1d;
+        margin-bottom: 20px; // Margem inferior do título
+        font-size: 22px; // Tamanho da fonte do título
+        color: #f14e1d; // Cor do título
       }
 
+      // Estilo para os itens dentro do carrinho
       .cart-item {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
+        display: flex; // Alinha o item e o botão de remoção lado a lado
+        justify-content: space-between; // Espaça os elementos
+        align-items: center; // Alinha verticalmente
+        margin-bottom: 10px; // Espaçamento inferior entre os itens
 
         .name {
-          font-weight: bold;
+          font-weight: bold; // Nome do produto em negrito
         }
 
         .price {
-          color: #888;
+          color: #888; // Cor acinzentada para o preço
         }
 
+        // Estilo do botão para remover itens
         .remove-button {
-          background: transparent;
-          border: none;
-          display: flex;
-          cursor: pointer; /* Change cursor to pointer */
-          margin-left: 10px; /* Space between item name and button */
-          transition: color 0.3s; /* Smooth color transition on hover */
+          background: transparent; // Botão sem fundo
+          border: none; // Sem borda
+          display: flex; // Exibe o ícone do botão de remoção
+          cursor: pointer; // Ícone de cursor ao passar sobre o botão
+          margin-left: 10px; // Espaçamento entre o nome do item e o botão
+          transition: color 0.3s; // Transição suave de cor ao passar o mouse
         
           img {
-            width: 15px; /* Set width of the icon */
-            height: auto;
+            width: 15px; // Define o tamanho do ícone
+            height: auto; // Ajusta a altura proporcionalmente
           }
         
           &:hover {
-            opacity: 0.8; /* Change opacity on hover for visual feedback */
+            opacity: 0.8; // Muda a opacidade ao passar o mouse para dar um feedback visual
           }
         }
-        
-        }
       }
 
+      // Estilo para o total do carrinho
       .cart-total {
-        border-top: 1px solid $border-color;
-        padding-top: 20px;
-        font-size: 18px;
+        border-top: 1px solid $border-color; // Linha superior para separação
+        padding-top: 20px; // Espaçamento interno no topo
+        font-size: 18px; // Tamanho da fonte
       }
 
+      // Estilo do botão de confirmar pedido
       .confirm-button {
-        background-color: $button-bg-color;
-        color: white;
-        width: 100%;
-        padding: 12px;
-        border: none;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        margin-top: 20px;
-        transition: background-color 0.3s;
+        background-color: $button-bg-color; // Cor de fundo do botão
+        color: white; // Cor do texto
+        width: 100%; // Largura total
+        padding: 12px; // Espaçamento interno
+        border: none; // Sem borda
+        border-radius: 5px; // Bordas arredondadas
+        font-size: 16px; // Tamanho da fonte
+        cursor: pointer; // Ícone de cursor ao passar sobre o botão
+        margin-top: 20px; // Espaçamento superior
+        transition: background-color 0.3s; // Transição suave de cor
 
         &:hover {
-          background-color: $button-hover-color;
+          background-color: $button-hover-color; // Cor do botão ao passar o mouse
         }
       }
     }
   }
 
+  // Estilo para o conteúdo modal
   .modal-content {
-    background-color: $card-bg-color;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+    background-color: $card-bg-color; // Fundo branco
+    padding: 20px; // Espaçamento interno
+    border-radius: 5px; // Bordas arredondadas
+    text-align: center; // Texto centralizado
 
     button {
-      background-color: $button-bg-color;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
+      background-color: $button-bg-color; // Cor de fundo do botão
+      color: white; // Cor do texto do botão
+      padding: 8px 16px; // Espaçamento interno
+      border-radius: 5px; // Bordas arredondadas
+      cursor: pointer; // Ícone de cursor ao passar sobre o botão
+      margin-top: 10px; // Margem superior para espaçamento
 
       &:hover {
-        background-color: $button-hover-color;
+        background-color: $button-hover-color; // Cor ao passar o mouse sobre o botão
       }
     }
   }
 
-  // Animation
+  // Animação de pulsação
   @keyframes pulse {
     0% {
-      transform: scale(1);
+      transform: scale(1); // Começa em tamanho normal
     }
     50% {
-      transform: scale(1.05);
+      transform: scale(1.05); // Expande ligeiramente
     }
     100% {
-      transform: scale(1);
+      transform: scale(1); // Volta ao tamanho normal
     }
   }
 
+  // Classe que aplica a animação de pulsação
   .pulse-animation {
-    animation: pulse 0.3s ease;
+    animation: pulse 0.3s ease; // Animação de pulsação com duração de 0.3s
   }
-
+}

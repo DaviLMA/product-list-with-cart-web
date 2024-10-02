@@ -2,21 +2,21 @@ import { v4 as randomUUID } from "uuid";
 import { Product } from "./entities/product";
 import { ShoppingCart } from "./entities/shoppingcart";
 
-// Instantiate the shopping cart
+// Instancia o carrinho de compras
 const cart = new ShoppingCart();
 
-// Function to fetch JSON data and generate products
+// Função para buscar dados em JSON e gerar produtos
 async function fetchProducts() {
   try {
     const response = await fetch("data.json");
     const productData = await response.json();
     generateProductList(productData);
   } catch (error) {
-    console.error("Failed to load product data", error);
+    console.error("Falha ao carregar os dados dos produtos", error);
   }
 }
 
-// Function to generate product elements and add to the DOM
+// Função para gerar os elementos dos produtos e adicionar ao DOM
 function generateProductList(productData: any[]) {
   const productList = document.getElementById("productList");
 
@@ -25,14 +25,14 @@ function generateProductList(productData: any[]) {
       const product = new Product(
         data.name,
         data.category,
-        data.image, // Passing image object
+        data.image, // Passando o objeto de imagens
         data.price
       );
 
       const productElement = document.createElement("div");
       productElement.classList.add("product");
 
-      // Choose the image based on the screen width (desktop, tablet, mobile)
+      // Escolhe a imagem com base na largura da tela (desktop, tablet, mobile)
       const imageUrl =
         window.innerWidth > 1024
           ? product.images.desktop
@@ -46,7 +46,7 @@ function generateProductList(productData: any[]) {
           <div class="category">${product.category}</div>
           <div class="name">${product.name}</div>
           <div class="price">$${product.price.toFixed(2)}</div>
-          <div class="button">Add to Cart</div>
+          <div class="button">Adicionar ao Carrinho</div>
         </div>
       `;
 
@@ -65,16 +65,16 @@ function generateProductList(productData: any[]) {
   }
 }
 
-// Fetch the products when the page loads
+// Busca os produtos quando a página carrega
 fetchProducts();
 
-// Add event listener to confirm order button
+// Adiciona event listener ao botão de confirmar pedido
 document.getElementById("confirmOrderBtn")?.addEventListener("click", () => {
   const confirmButton = document.getElementById("confirmOrderBtn");
   confirmButton?.classList.add("pop-animation");
   setTimeout(() => {
     confirmButton?.classList.remove("pop-animation");
-  }, 300); // Duration should match the animation time
+  }, 300); // A duração deve coincidir com o tempo da animação
 
-  alert("Your order has been confirmed!");
+  alert("Seu pedido foi confirmado!");
 });
